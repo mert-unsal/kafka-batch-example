@@ -42,7 +42,7 @@
         <dependency>
             <groupId>com.munsal</groupId>
             <artifactId>kafka-easy-configuration</artifactId>
-            <version>0.1.1</version>
+            <version>0.1.2</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -139,6 +139,11 @@
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
+        </repository>
+        <repository>
+            <id>github</id>
+            <name>GitHub OWNER Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/mert-unsal/kafka-easy-configuration</url>
         </repository>
     </repositories>
     <pluginRepositories>

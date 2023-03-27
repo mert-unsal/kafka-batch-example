@@ -68,23 +68,23 @@ services:
       timeout: 3s
       retries: 3
 
-#  munsal-case-study-backend:
-#    restart: always
-#    build: .
-#    ports:
-#      - "8080:8080"
-#    environment:
-#      DB_URL: jdbc:postgresql://munsaldb:5432/munsalcasestudydb
-#      KAFKA_BOOTSTRAP_SERVERS: DOCKER://host.docker.internal:29092
-#    depends_on:
-#      munsaldb:
-#        condition: service_healthy
-#      kafka1:
-#        condition: service_healthy
-#    links:
-#      - kafka1
-#    networks:
-#      - munsal-net
+  munsal-case-study-backend:
+    restart: always
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      DB_URL: jdbc:postgresql://munsaldb:5432/munsalcasestudydb
+      KAFKA_BOOTSTRAP_SERVERS: DOCKER://host.docker.internal:29092
+    depends_on:
+      munsaldb:
+        condition: service_healthy
+      kafka1:
+        condition: service_healthy
+    links:
+      - kafka1
+    networks:
+      - munsal-net
 
 networks:
   munsal-net:

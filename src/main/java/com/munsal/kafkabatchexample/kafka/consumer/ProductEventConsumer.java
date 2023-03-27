@@ -37,5 +37,18 @@ public class ProductEventConsumer {
         }
     }
 
-
+    @KafkaListener(topics = "${kafka-configuration.consumers[product-case-study-batch-consumer].retryTopic}",
+            groupId = "${kafka-configuration.consumers[product-case-study-batch-consumer].props[retry-group.id]}",
+            containerFactory = "#{kafkaListenerContainerFactoryMap['product-case-study-batch-consumer']}")
+    public void retryListen(@Payload List<ProductEvent> productEventList,
+                       @Header(KafkaHeaders.RECEIVED_KEY) List<Integer> keys,
+                       @Header(KafkaHeaders.RECEIVED_PARTITION) List<Integer> partitions,
+                       @Header(KafkaHeaders.RECEIVED_TOPIC) List<String> topics,
+                       @Header(KafkaHeaders.OFFSET) List<Long> offsets) {
+        try {
+            productBatchEventListener.handleBatchEvent(productEventList);
+        } catch (Exception exception) {
+            throw exception;
+        }
+    }
 }

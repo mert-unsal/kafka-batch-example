@@ -15,7 +15,8 @@ kafka-configuration:
   consumers:
     "[product-case-study-batch-consumer]":
       topic: ${kafka-configuration.topics.case-study-consumer-topic}
-      error-topic: munsal.case.study.product.topic.error
+      retryTopic: ${kafka-configuration.topics.case-study-consumer-topic-retry}
+      error-topic: ${kafka-configuration.topics.case-study-consumer-topic-error}
       data-class: com.munsal.kafkabatchexample.domain.event.ProductEvent
       enabled: true
       concurrency: 10
@@ -39,3 +40,5 @@ kafka-configuration:
         "[request.timeout.ms]": 20000
   topics:
     case-study-consumer-topic: munsal.case.study.product.topic
+    case-study-consumer-topic-retry: munsal.case.study.product.topic.retry
+    case-study-consumer-topic-error: munsal.case.study.product.topic.error

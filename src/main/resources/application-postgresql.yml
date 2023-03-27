@@ -6,7 +6,7 @@ spring:
     password: ${DB_PASSWORD:munsaldbpass}
     hikari:
       pool-name: munsalCaseStudyPostgresHikariPool
-      maximum-pool-size: 10
+      maximum-pool-size: 500
       minimum-idle: 3
       connectionTimeout: 10000
       idle-timeout: 60000

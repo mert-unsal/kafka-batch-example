@@ -1,7 +1,6 @@
 FROM maven:3.8.4-openjdk-17-slim AS builder
 WORKDIR /
 COPY pom.xml ./pom.xml
-RUN mvn dependency:go-offline
 COPY src/ ./src/
 RUN mvn clean install -Dmaven.test.skip=true
 

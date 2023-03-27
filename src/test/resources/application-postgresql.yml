@@ -6,7 +6,7 @@ spring:
     password: ${DB_PASSWORD:munsaldbpass}
     hikari:
       pool-name: munsalCaseStudyPostgresHikariPool
-      maximum-pool-size: 10
+      maximum-pool-size: 500
       minimum-idle: 3
       connectionTimeout: 10000
       idle-timeout: 60000
@@ -19,7 +19,7 @@ spring:
         generate_statistics: true
         jdbc:
           time_zone: UTC
-          batch_size: 50
+          batch_size: 500
           order_inserts: true
         dialect: org.hibernate.dialect.PostgreSQLDialect
         package_to_scan: com.munsal.javacasestudy
