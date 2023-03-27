@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: munsalCaseStudy
+    description: Case Study for Mert UNSAL Interview
+  profiles:
+    include: postgresql, kafka
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+
+server:
+  port: 8080
+
+logging:
+  level:
+    org.hibernate: INFO
+    org.liquibase: INFO

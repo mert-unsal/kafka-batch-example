@@ -1,0 +1,32 @@
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/munsalcasestudydb}
+    driver-class-name: org.postgresql.Driver
+    username: ${DB_USERNAME:munsaldbuser}
+    password: ${DB_PASSWORD:munsaldbpass}
+    hikari:
+      pool-name: munsalCaseStudyPostgresHikariPool
+      maximum-pool-size: 10
+      minimum-idle: 3
+      connectionTimeout: 10000
+      idle-timeout: 60000
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        generate_statistics: true
+        jdbc:
+          time_zone: UTC
+          batch_size: 50
+          order_inserts: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        package_to_scan: com.munsal.javacasestudy
+  data:
+    jpa:
+      repositories:
+        enabled: true
+  liquibase:
+    change-log: db/changelog/changelog-master.xml
+    enabled: ${LIQUIBASE_ENABLED:false}

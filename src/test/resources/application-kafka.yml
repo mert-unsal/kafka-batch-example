@@ -1,0 +1,41 @@
+kafka-configuration:
+  producers:
+    "[default]":
+      props:
+        "[bootstrap.servers]": localhost:9092,localhost:9093
+        "[batch.size]": 32768
+        "[buffer.memory]": 33554432
+        "[key.serializer]": org.apache.kafka.common.serialization.StringSerializer
+        "[value.serializer]": org.springframework.kafka.support.serializer.JsonSerializer
+        "[linger.ms]": 20
+        "[acks]": all
+        "[default.api.timeout.ms]": 20000
+        "[request.timeout.ms]": 20000
+        "[auto.offset.reset]": earliest
+  consumers:
+    "[product-case-study-batch-consumer]":
+      topic: ${kafka-configuration.topics.case-study-consumer-topic}
+      error-topic: munsal.case.study.product.topic.error
+      data-class: com.munsal.kafkabatchexample.domain.event.ProductEvent
+      enabled: true
+      concurrency: 10
+      sync-commit: true
+      sync-commit-timeout-second: 5
+      retry-type: no_retry
+      batch-listener: true
+      props:
+        "[group.id]": munsal.case.study.product.group
+        "[retry-group.id]": munsal.case.study.product.retry.group
+        "[bootstrap.servers]": localhost:9092,localhost:9093
+        "[max.poll.records]": 500 #for batch listener
+        "[max.poll.interval.ms]": 300000 #poll time
+        "[session.timeout.ms]": 10000
+        "[heartbeat.interval.ms]": 3000
+        "[enable.auto.commit]": true
+        "[auto.offset.reset]": earliest
+        "[fetch.max.bytes]": 52428800
+        "[fetch.max.wait.ms]": 500
+        "[default.api.timeout.ms]": 20000
+        "[request.timeout.ms]": 20000
+  topics:
+    case-study-consumer-topic: munsal.case.study.product.topic
