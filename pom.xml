@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.munsal</groupId>
-    <artifactId>case-study</artifactId>
+    <artifactId>kafka-batch-case-study</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>mert-unsal-java-case-study</name>
     <description>Mert UNSAL Case Study Senior Software Engineering  </description>
